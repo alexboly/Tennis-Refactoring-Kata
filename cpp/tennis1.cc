@@ -2,18 +2,13 @@
 
 using namespace std;
 
-static const char *const ZERO = "Love";
-static const char *const FIFTEEN = "Fifteen";
-
-static const char *const THIRTY = "Thirty";
-
-static const char *const FORTY = "Forty";
-
-static const char *const SEPARATOR = "-";
-
-static const char *const ALL = "All";
-
-static const char *const DEUCE = "Deuce";
+static const string ZERO = "Love";
+static const string FIFTEEN = "Fifteen";
+static const string THIRTY = "Thirty";
+static const string FORTY = "Forty";
+static const string SEPARATOR = "-";
+static const string ALL = "All";
+static const string DEUCE = "Deuce";
 
 bool hasAdvantage(int playerScore);
 

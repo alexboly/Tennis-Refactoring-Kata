@@ -25,7 +25,7 @@ string scoreToString(int score);
 string formatScore(int p1Score, int p2Score);
 
 const string tennis_score(int p1Score, int p2Score) {
-    string score = "";
+    string score;
     if (p1Score==p2Score)
     {
         switch (p1Score)

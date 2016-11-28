@@ -47,7 +47,7 @@ const std::string tennis_score(int p1Score, int p2Score) {
 	        score = formatAdvantageMessage("player1");
         }
         if (minusResult == -1) {
-	        score =std::string("Advantage ") + std::string("player2");
+	        score = formatAdvantageMessage("player2");
         }
         if (minusResult>=2) {
 	        score = "Win for player1";

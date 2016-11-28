@@ -23,7 +23,7 @@ const std::string tennis_score(int p1Score, int p2Score) {
                     score = std::string(FIFTEEN)  + std::string("-All");
                 break;
             case 2:
-                    score = "Thirty-All";
+                    score = std::string(THIRTY) + std::string("-All");
                 break;
             default:
                     score = "Deuce";

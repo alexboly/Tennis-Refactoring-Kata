@@ -55,8 +55,8 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore) {
 	int minusResult = firstPlayerScore - secondPlayerScore;
 
-	const char *firstPlayerName = "player1";
-	const char *secondPlayerName = "player2";
+	const string firstPlayerName("player1");
+	const string secondPlayerName("player2");
 
 	if (minusResult == 1) {
 		return formatAdvantageMessage(firstPlayerName);

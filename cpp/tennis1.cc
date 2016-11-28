@@ -28,14 +28,14 @@ string formatScore(int p1Score, int p2Score);
 
 const string formatScoreWhenEqual(const int score);
 
-string &formatScoreWhenAdvantage(int firstPlayerScore, int secondPlayerScore, string &score);
+string formatScoreWhenAdvantage(int firstPlayerScore, int secondPlayerScore);
 
 const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	string score;
 	if (firstPlayerScore == secondPlayerScore) {
 		score = formatScoreWhenEqual(firstPlayerScore);
 	} else if (hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) {
-		score = formatScoreWhenAdvantage(firstPlayerScore, secondPlayerScore, score);
+		score = formatScoreWhenAdvantage(firstPlayerScore, secondPlayerScore);
 
 	} else {
 		score = formatScore(firstPlayerScore, secondPlayerScore);
@@ -43,25 +43,25 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	return score;
 }
 
-string &formatScoreWhenAdvantage(int firstPlayerScore, int secondPlayerScore, string &score) {
+string formatScoreWhenAdvantage(int firstPlayerScore, int secondPlayerScore) {
 	int minusResult = firstPlayerScore - secondPlayerScore;
 
 	const char *firstPlayerName = "player1";
 	const char *secondPlayerName = "player2";
 
 	if (minusResult == 1) {
-		score = formatAdvantageMessage(firstPlayerName);
+		return formatAdvantageMessage(firstPlayerName);
 	}
 	if (minusResult == -1) {
-		score = formatAdvantageMessage(secondPlayerName);
+		return formatAdvantageMessage(secondPlayerName);
 	}
 	if (minusResult >= 2) {
-		score = formatWinMessage(firstPlayerName);
+		return formatWinMessage(firstPlayerName);
 	}
 	if (minusResult <= -2) {
-		score = formatWinMessage(secondPlayerName);
+		return formatWinMessage(secondPlayerName);
 	}
-	return score;
+	return string();
 }
 
 const string formatScoreWhenEqual(const int score) {

@@ -28,7 +28,7 @@ string formatScoreNotEqualBeforeAdvantages(int p1Score, int p2Score);
 
 const string formatScoreWhenEqual(const int score);
 
-string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore, string playerWhoHasAdvantage);
+string formatScoreWhenNotEqualDuringAdvantages(int higherPlayerScore, int lowerPlayerScore, string playerWhoHasAdvantage);
 
 const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	const string firstPlayerName("player1");
@@ -58,8 +58,8 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	return string();
 }
 
-string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore, string playerWhoHasAdvantage) {
-	int minusResult = firstPlayerScore - secondPlayerScore;
+string formatScoreWhenNotEqualDuringAdvantages(int higherPlayerScore, int lowerPlayerScore, string playerWhoHasAdvantage) {
+	int minusResult = higherPlayerScore - lowerPlayerScore;
 
 	if (minusResult == 1) {
 		return formatAdvantageMessage(playerWhoHasAdvantage);

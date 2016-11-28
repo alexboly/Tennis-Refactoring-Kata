@@ -40,10 +40,19 @@ const std::string tennis_score(int p1Score, int p2Score) {
     else if (hasAdvantage(p1Score) || hasAdvantage(p2Score))
     {
         int minusResult = p1Score-p2Score;
-        if (minusResult==1) score ="Advantage player1";
-        else if (minusResult ==-1) score ="Advantage player2";
-        else if (minusResult>=2) score = "Win for player1";
-        else score ="Win for player2";
+
+	    if (minusResult==1) {
+	        score = "Advantage player1";
+        }
+        if (minusResult == -1) {
+	        score ="Advantage player2";
+        }
+        if (minusResult>=2) {
+	        score = "Win for player1";
+        }
+        if (minusResult <= -2) {
+	        score ="Win for player2";
+        }
     }
     else
     {

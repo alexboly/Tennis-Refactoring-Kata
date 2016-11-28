@@ -26,10 +26,10 @@ string scoreToString(int score);
 
 string formatScore(int p1Score, int p2Score);
 
-const string tennis_score(int p1Score, int p2Score) {
+const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	string score;
-	if (p1Score == p2Score) {
-		switch (p1Score) {
+	if (firstPlayerScore == secondPlayerScore) {
+		switch (firstPlayerScore) {
 			case 0:
 				score = ZERO + SEPARATOR + ALL;
 				break;
@@ -44,8 +44,8 @@ const string tennis_score(int p1Score, int p2Score) {
 				break;
 
 		}
-	} else if (hasAdvantage(p1Score) || hasAdvantage(p2Score)) {
-		int minusResult = p1Score - p2Score;
+	} else if (hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) {
+		int minusResult = firstPlayerScore - secondPlayerScore;
 
 		const char *firstPlayerName = "player1";
 		const char *secondPlayerName = "player2";
@@ -63,7 +63,7 @@ const string tennis_score(int p1Score, int p2Score) {
 			score = formatWinMessage(secondPlayerName);
 		}
 	} else {
-		score = formatScore(p1Score, p2Score);
+		score = formatScore(firstPlayerScore, secondPlayerScore);
 	}
 	return score;
 }

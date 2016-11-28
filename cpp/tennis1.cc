@@ -32,6 +32,8 @@ string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondP
                                                string secondPlayerName);
 
 const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
+	const string firstPlayerName("player1");
+	const string secondPlayerName("player2");
 	const bool scoreIsEqual = (firstPlayerScore == secondPlayerScore);
 	const bool scoreNotEqualDuringAdvantages = (firstPlayerScore != secondPlayerScore) &&
 	                                           (hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore));
@@ -42,9 +44,14 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 		return formatScoreWhenEqual(firstPlayerScore);
 	}
 
-	if (scoreNotEqualDuringAdvantages) {
-		return formatScoreWhenNotEqualDuringAdvantages(firstPlayerScore, secondPlayerScore, string("player1"),
-		                                               string("player2"));
+	if (scoreNotEqualDuringAdvantages && firstPlayerScore > secondPlayerScore) {
+		return formatScoreWhenNotEqualDuringAdvantages(firstPlayerScore, secondPlayerScore, firstPlayerName,
+		                                               secondPlayerName);
+	}
+
+	if (scoreNotEqualDuringAdvantages && firstPlayerScore < secondPlayerScore) {
+		return formatScoreWhenNotEqualDuringAdvantages(secondPlayerScore, firstPlayerScore, secondPlayerName,
+		                                               firstPlayerName);
 	}
 
 	if (scoreNotEqualBeforeAdvantages) {
@@ -61,14 +68,8 @@ string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondP
 	if (minusResult == 1) {
 		return formatAdvantageMessage(firstPlayerName);
 	}
-	if (minusResult == -1) {
-		return formatAdvantageMessage(secondPlayerName);
-	}
 	if (minusResult >= 2) {
 		return formatWinMessage(firstPlayerName);
-	}
-	if (minusResult <= -2) {
-		return formatWinMessage(secondPlayerName);
 	}
 	return string();
 }

@@ -11,6 +11,8 @@ static const char *const SEPARATOR = "-";
 
 static const char *const ALL = "All";
 
+static const char *const DEUCE = "Deuce";
+
 bool hasAdvantage(int playerScore);
 
 const std::string tennis_score(int p1Score, int p2Score) {
@@ -30,7 +32,7 @@ const std::string tennis_score(int p1Score, int p2Score) {
                     score = std::string(THIRTY) +  std::string(SEPARATOR) + std::string(ALL);
                 break;
             default:
-                    score = "Deuce";
+                    score = DEUCE;
                 break;
             
         }

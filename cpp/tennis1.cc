@@ -24,26 +24,36 @@ string formatWinMessage(string playerName);
 
 string scoreToString(int score);
 
-string formatScore(int p1Score, int p2Score);
+string formatScoreNotEqualBeforeAdvantages(int p1Score, int p2Score);
 
 const string formatScoreWhenEqual(const int score);
 
-string formatScoreWhenAdvantage(int firstPlayerScore, int secondPlayerScore);
+string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore);
 
 const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	string score;
-	if (firstPlayerScore == secondPlayerScore) {
-		score = formatScoreWhenEqual(firstPlayerScore);
-	} else if (hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) {
-		score = formatScoreWhenAdvantage(firstPlayerScore, secondPlayerScore);
+	const bool scoreIsEqual = (firstPlayerScore == secondPlayerScore);
+	const bool scoreNotEqualDuringAdvantages = (firstPlayerScore != secondPlayerScore) &&
+	                                           (hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore));
+	const bool scoreNotEqualBeforeAdvantages = (firstPlayerScore != secondPlayerScore) &&
+	                                           !(hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore));
 
-	} else {
-		score = formatScore(firstPlayerScore, secondPlayerScore);
+	if (scoreIsEqual) {
+		score = formatScoreWhenEqual(firstPlayerScore);
 	}
+
+	if (scoreNotEqualDuringAdvantages) {
+		score = formatScoreWhenNotEqualDuringAdvantages(firstPlayerScore, secondPlayerScore);
+	}
+
+	if (scoreNotEqualBeforeAdvantages) {
+		score = formatScoreNotEqualBeforeAdvantages(firstPlayerScore, secondPlayerScore);
+	}
+
 	return score;
 }
 
-string formatScoreWhenAdvantage(int firstPlayerScore, int secondPlayerScore) {
+string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore) {
 	int minusResult = firstPlayerScore - secondPlayerScore;
 
 	const char *firstPlayerName = "player1";
@@ -78,7 +88,7 @@ const string formatScoreWhenEqual(const int score) {
 	}
 }
 
-string formatScore(int p1Score, int p2Score) { return scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score); }
+string formatScoreNotEqualBeforeAdvantages(int p1Score, int p2Score) { return scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score); }
 
 string scoreToString(int score) {
 	switch (score) {

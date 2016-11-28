@@ -44,17 +44,20 @@ const std::string tennis_score(int p1Score, int p2Score) {
     {
         int minusResult = p1Score-p2Score;
 
-	    if (minusResult==1) {
-	        score = formatAdvantageMessage("player1");
+	    const char *firstPlayerName = "player1";
+	    const char *secondPlayerName = "player2";
+
+	    if (minusResult == 1) {
+	        score = formatAdvantageMessage(firstPlayerName);
         }
-        if (minusResult == -1) {
-	        score = formatAdvantageMessage("player2");
+	    if (minusResult == -1) {
+	        score = formatAdvantageMessage(secondPlayerName);
         }
         if (minusResult>=2) {
-	        score = formatWinMessage("player1");
+	        score = formatWinMessage(firstPlayerName);
         }
         if (minusResult <= -2) {
-	        score =formatWinMessage("player2");
+	        score =formatWinMessage(secondPlayerName);
         }
     }
     else

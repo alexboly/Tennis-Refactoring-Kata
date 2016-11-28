@@ -26,24 +26,12 @@ string scoreToString(int score);
 
 string formatScore(int p1Score, int p2Score);
 
+string &formatScoreWhenEqual(int score, string &scoreMessage);
+
 const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	string score;
 	if (firstPlayerScore == secondPlayerScore) {
-		switch (firstPlayerScore) {
-			case 0:
-				score = ZERO + SEPARATOR + ALL;
-				break;
-			case 1:
-				score = FIFTEEN + SEPARATOR + ALL;
-				break;
-			case 2:
-				score = THIRTY + SEPARATOR + ALL;
-				break;
-			default:
-				score = DEUCE;
-				break;
-
-		}
+		score = formatScoreWhenEqual(firstPlayerScore, score);
 	} else if (hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) {
 		int minusResult = firstPlayerScore - secondPlayerScore;
 
@@ -66,6 +54,25 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 		score = formatScore(firstPlayerScore, secondPlayerScore);
 	}
 	return score;
+}
+
+string &formatScoreWhenEqual(int score, string &scoreMessage) {
+	switch (score) {
+		case 0:
+			scoreMessage = ZERO + SEPARATOR + ALL;
+			break;
+		case 1:
+			scoreMessage = FIFTEEN + SEPARATOR + ALL;
+			break;
+		case 2:
+			scoreMessage = THIRTY + SEPARATOR + ALL;
+			break;
+		default:
+			scoreMessage = DEUCE;
+			break;
+
+	}
+	return scoreMessage;
 }
 
 string formatScore(int p1Score, int p2Score) { return scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score); }

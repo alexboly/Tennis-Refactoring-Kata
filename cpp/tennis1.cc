@@ -10,6 +10,8 @@ static const string SEPARATOR = "-";
 static const string ALL = "All";
 static const string DEUCE = "Deuce";
 
+static const string ADVANTAGE = "Advantage";
+
 bool hasAdvantage(int playerScore);
 
 string formatAdvantageMessage(string playerName);
@@ -79,7 +81,7 @@ string scoreToString(int score) {
 
 }
 
-string formatAdvantageMessage(string playerName) { return string("Advantage ") + playerName; }
+string formatAdvantageMessage(string playerName) { return ADVANTAGE + string(" ") + playerName; }
 
 bool hasAdvantage(int playerScore) { return playerScore >= 4; }
 

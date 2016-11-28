@@ -7,6 +7,8 @@ static const char *const THIRTY = "Thirty";
 
 static const char *const FORTY = "Forty";
 
+static const char *const SEPARATOR = "-";
+
 bool hasAdvantage(int playerScore);
 
 const std::string tennis_score(int p1Score, int p2Score) {
@@ -44,7 +46,7 @@ const std::string tennis_score(int p1Score, int p2Score) {
         for (int i=1; i<3; i++)
         {
             if (i==1) tempScore = p1Score;
-            else { score+="-"; tempScore = p2Score;}
+            else { score+= SEPARATOR; tempScore = p2Score;}
             switch(tempScore)
             {
                 case 0:

@@ -15,6 +15,8 @@ static const char *const DEUCE = "Deuce";
 
 bool hasAdvantage(int playerScore);
 
+std::string formatAdvantageMessage();
+
 const std::string tennis_score(int p1Score, int p2Score) {
     std::string score = "";
     int tempScore=0;
@@ -42,10 +44,10 @@ const std::string tennis_score(int p1Score, int p2Score) {
         int minusResult = p1Score-p2Score;
 
 	    if (minusResult==1) {
-	        score = "Advantage player1";
+	        score = formatAdvantageMessage();
         }
         if (minusResult == -1) {
-	        score ="Advantage player2";
+	        score =std::string("Advantage ") + std::string("player2");
         }
         if (minusResult>=2) {
 	        score = "Win for player1";
@@ -79,5 +81,7 @@ const std::string tennis_score(int p1Score, int p2Score) {
     }
     return score;
 }
+
+std::string formatAdvantageMessage() { return std::string("Advantage ") + std::string("player1"); }
 
 bool hasAdvantage(int playerScore) { return playerScore >= 4; }

@@ -9,6 +9,8 @@ static const char *const FORTY = "Forty";
 
 static const char *const SEPARATOR = "-";
 
+static const char *const ALL = "All";
+
 bool hasAdvantage(int playerScore);
 
 const std::string tennis_score(int p1Score, int p2Score) {
@@ -19,13 +21,13 @@ const std::string tennis_score(int p1Score, int p2Score) {
         switch (p1Score)
         {
             case 0:
-                    score = std::string(ZERO) + std::string(SEPARATOR) + std::string("All");
+                    score = std::string(ZERO) + std::string(SEPARATOR) + std::string(ALL);
                 break;
             case 1:
-                    score = std::string(FIFTEEN)  +  std::string(SEPARATOR) + std::string("All");
+                    score = std::string(FIFTEEN)  +  std::string(SEPARATOR) + std::string(ALL);
                 break;
             case 2:
-                    score = std::string(THIRTY) +  std::string(SEPARATOR) + std::string("All");
+                    score = std::string(THIRTY) +  std::string(SEPARATOR) + std::string(ALL);
                 break;
             default:
                     score = "Deuce";

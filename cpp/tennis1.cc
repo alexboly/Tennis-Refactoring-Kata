@@ -18,7 +18,6 @@ bool hasAdvantage(int playerScore);
 std::string formatAdvantageMessage(std::string playerName);
 std::string formatWinMessage(std::string playerName);
 
-std::string &appendScoreToString(int score, std::string &scoreMessage);
 std::string scoreToString(int score);
 
 const std::string tennis_score(int p1Score, int p2Score) {
@@ -72,25 +71,6 @@ const std::string tennis_score(int p1Score, int p2Score) {
 	    score += scoreToString(p2Score);
     }
     return score;
-}
-
-std::string &appendScoreToString(int score, std::string &scoreMessage) {
-	switch(score)
-	    {
-		    case 0:
-			    scoreMessage+= ZERO;
-			    break;
-		    case 1:
-			    scoreMessage+= FIFTEEN;
-			    break;
-		    case 2:
-			    scoreMessage+= THIRTY;
-			    break;
-		    case 3:
-			    scoreMessage+= FORTY;
-			    break;
-	    }
-	return scoreMessage;
 }
 
 std::string scoreToString(int score) {

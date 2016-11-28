@@ -19,13 +19,13 @@ const std::string tennis_score(int p1Score, int p2Score) {
         switch (p1Score)
         {
             case 0:
-                    score = std::string(ZERO) + std::string("-All");
+                    score = std::string(ZERO) + std::string(SEPARATOR) + std::string("All");
                 break;
             case 1:
-                    score = std::string(FIFTEEN)  + std::string("-All");
+                    score = std::string(FIFTEEN)  +  std::string(SEPARATOR) + std::string("All");
                 break;
             case 2:
-                    score = std::string(THIRTY) + std::string("-All");
+                    score = std::string(THIRTY) +  std::string(SEPARATOR) + std::string("All");
                 break;
             default:
                     score = "Deuce";

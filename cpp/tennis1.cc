@@ -20,6 +20,8 @@ std::string formatWinMessage(std::string playerName);
 
 std::string scoreToString(int score);
 
+std::string formatScore(int p1Score, int p2Score);
+
 const std::string tennis_score(int p1Score, int p2Score) {
     std::string score = "";
     if (p1Score==p2Score)
@@ -58,15 +60,17 @@ const std::string tennis_score(int p1Score, int p2Score) {
 	        score = formatWinMessage(firstPlayerName);
         }
         if (minusResult <= -2) {
-	        score =formatWinMessage(secondPlayerName);
+	        score = formatWinMessage(secondPlayerName);
         }
     }
     else
     {
-	    score = scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score);
+	    score = formatScore(p1Score, p2Score);
     }
     return score;
 }
+
+std::string formatScore(int p1Score, int p2Score) { return scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score); }
 
 std::string scoreToString(int score) {
 	switch(score)

@@ -1,5 +1,7 @@
 #include <string>
 
+bool hasAdvantage(int playerScore);
+
 const std::string tennis_score(int p1Score, int p2Score) {
     std::string score = "";
     int tempScore=0;
@@ -22,7 +24,7 @@ const std::string tennis_score(int p1Score, int p2Score) {
             
         }
     }
-    else if (p1Score>=4 || p2Score>=4)
+    else if (hasAdvantage(p1Score) || hasAdvantage(p2Score))
     {
         int minusResult = p1Score-p2Score;
         if (minusResult==1) score ="Advantage player1";
@@ -54,5 +56,6 @@ const std::string tennis_score(int p1Score, int p2Score) {
         }
     }
     return score;
-    
 }
+
+bool hasAdvantage(int playerScore) { return playerScore >= 4; }

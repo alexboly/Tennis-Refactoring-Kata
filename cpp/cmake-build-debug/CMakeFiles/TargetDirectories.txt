@@ -1,0 +1,4 @@
+/home/alexb/workspace/Tennis-Refactoring-Kata/cpp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/alexb/workspace/Tennis-Refactoring-Kata/cpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/alexb/workspace/Tennis-Refactoring-Kata/cpp/cmake-build-debug/CMakeFiles/run.tests.dir
+/home/alexb/workspace/Tennis-Refactoring-Kata/cpp/cmake-build-debug/CMakeFiles/cpp.dir

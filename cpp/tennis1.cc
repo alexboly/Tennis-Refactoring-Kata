@@ -31,7 +31,6 @@ const string formatScoreWhenEqual(const int score);
 string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore);
 
 const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
-	string score;
 	const bool scoreIsEqual = (firstPlayerScore == secondPlayerScore);
 	const bool scoreNotEqualDuringAdvantages = (firstPlayerScore != secondPlayerScore) &&
 	                                           (hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore));
@@ -39,18 +38,18 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	                                           !(hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore));
 
 	if (scoreIsEqual) {
-		score = formatScoreWhenEqual(firstPlayerScore);
+		return formatScoreWhenEqual(firstPlayerScore);
 	}
 
 	if (scoreNotEqualDuringAdvantages) {
-		score = formatScoreWhenNotEqualDuringAdvantages(firstPlayerScore, secondPlayerScore);
+		return formatScoreWhenNotEqualDuringAdvantages(firstPlayerScore, secondPlayerScore);
 	}
 
 	if (scoreNotEqualBeforeAdvantages) {
-		score = formatScoreNotEqualBeforeAdvantages(firstPlayerScore, secondPlayerScore);
+		return formatScoreNotEqualBeforeAdvantages(firstPlayerScore, secondPlayerScore);
 	}
 
-	return score;
+	return string();
 }
 
 string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore) {
@@ -88,7 +87,9 @@ const string formatScoreWhenEqual(const int score) {
 	}
 }
 
-string formatScoreNotEqualBeforeAdvantages(int p1Score, int p2Score) { return scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score); }
+string formatScoreNotEqualBeforeAdvantages(int p1Score, int p2Score) {
+	return scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score);
+}
 
 string scoreToString(int score) {
 	switch (score) {

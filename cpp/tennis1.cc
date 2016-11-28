@@ -18,9 +18,10 @@ bool hasAdvantage(int playerScore);
 std::string formatAdvantageMessage(std::string playerName);
 std::string formatWinMessage(std::string playerName);
 
+std::string &foo(int p2Score, std::string &score);
+
 const std::string tennis_score(int p1Score, int p2Score) {
     std::string score = "";
-    int tempScore=0;
     if (p1Score==p2Score)
     {
         switch (p1Score)
@@ -62,28 +63,33 @@ const std::string tennis_score(int p1Score, int p2Score) {
     }
     else
     {
-        for (int i=1; i<3; i++)
-        {
-            if (i==1) tempScore = p1Score;
-            else { score+= SEPARATOR; tempScore = p2Score;}
-            switch(tempScore)
-            {
-                case 0:
-                    score+= ZERO;
-                    break;
-                case 1:
-                    score+= FIFTEEN;
-                    break;
-                case 2:
-                    score+= THIRTY;
-                    break;
-                case 3:
-                    score+= FORTY;
-                    break;
-            }
-        }
+
+	    score=foo(p1Score, score);
+
+	    score+= SEPARATOR;
+
+	    score = foo(p2Score, score);
     }
     return score;
+}
+
+std::string &foo(int p2Score, std::string &score) {
+	switch(p2Score)
+	    {
+		    case 0:
+			    score+= ZERO;
+			    break;
+		    case 1:
+			    score+= FIFTEEN;
+			    break;
+		    case 2:
+			    score+= THIRTY;
+			    break;
+		    case 3:
+			    score+= FORTY;
+			    break;
+	    }
+	return score;
 }
 
 std::string formatAdvantageMessage(std::string playerName) { return std::string("Advantage ") + playerName; }

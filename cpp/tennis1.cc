@@ -1,5 +1,7 @@
 #include <string>
 
+using namespace std;
+
 static const char *const ZERO = "Love";
 static const char *const FIFTEEN = "Fifteen";
 
@@ -15,27 +17,27 @@ static const char *const DEUCE = "Deuce";
 
 bool hasAdvantage(int playerScore);
 
-std::string formatAdvantageMessage(std::string playerName);
-std::string formatWinMessage(std::string playerName);
+string formatAdvantageMessage(string playerName);
+string formatWinMessage(string playerName);
 
-std::string scoreToString(int score);
+string scoreToString(int score);
 
-std::string formatScore(int p1Score, int p2Score);
+string formatScore(int p1Score, int p2Score);
 
-const std::string tennis_score(int p1Score, int p2Score) {
-    std::string score = "";
+const string tennis_score(int p1Score, int p2Score) {
+    string score = "";
     if (p1Score==p2Score)
     {
         switch (p1Score)
         {
             case 0:
-                    score = std::string(ZERO) + std::string(SEPARATOR) + std::string(ALL);
+                    score = string(ZERO) + string(SEPARATOR) + string(ALL);
                 break;
             case 1:
-                    score = std::string(FIFTEEN)  +  std::string(SEPARATOR) + std::string(ALL);
+                    score = string(FIFTEEN)  +  string(SEPARATOR) + string(ALL);
                 break;
             case 2:
-                    score = std::string(THIRTY) +  std::string(SEPARATOR) + std::string(ALL);
+                    score = string(THIRTY) +  string(SEPARATOR) + string(ALL);
                 break;
             default:
                     score = DEUCE;
@@ -70,9 +72,9 @@ const std::string tennis_score(int p1Score, int p2Score) {
     return score;
 }
 
-std::string formatScore(int p1Score, int p2Score) { return scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score); }
+string formatScore(int p1Score, int p2Score) { return scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score); }
 
-std::string scoreToString(int score) {
+string scoreToString(int score) {
 	switch(score)
 	{
 		case 0:
@@ -84,14 +86,14 @@ std::string scoreToString(int score) {
 		case 3:
 			return FORTY;
 	}
-	return std::string();
+	return string();
 
 }
-std::string formatAdvantageMessage(std::string playerName) { return std::string("Advantage ") + playerName; }
+string formatAdvantageMessage(string playerName) { return string("Advantage ") + playerName; }
 
 bool hasAdvantage(int playerScore) { return playerScore >= 4; }
 
-std::string formatWinMessage(std::string playerName)
+string formatWinMessage(string playerName)
 {
-	return std::string("Win for ") + playerName;
+	return string("Win for ") + playerName;
 }

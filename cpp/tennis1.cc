@@ -1,5 +1,12 @@
 #include <string>
 
+static const char *const ZERO = "Love";
+static const char *const FIFTEEN = "Fifteen";
+
+static const char *const THIRTY = "Thirty";
+
+static const char *const FORTY = "Forty";
+
 bool hasAdvantage(int playerScore);
 
 const std::string tennis_score(int p1Score, int p2Score) {
@@ -41,16 +48,16 @@ const std::string tennis_score(int p1Score, int p2Score) {
             switch(tempScore)
             {
                 case 0:
-                    score+="Love";
+                    score+= ZERO;
                     break;
                 case 1:
-                    score+="Fifteen";
+                    score+= FIFTEEN;
                     break;
                 case 2:
-                    score+="Thirty";
+                    score+= THIRTY;
                     break;
                 case 3:
-                    score+="Forty";
+                    score+= FORTY;
                     break;
             }
         }

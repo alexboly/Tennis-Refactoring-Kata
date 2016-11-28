@@ -28,8 +28,7 @@ string formatScoreNotEqualBeforeAdvantages(int p1Score, int p2Score);
 
 const string formatScoreWhenEqual(const int score);
 
-string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore, string firstPlayerName,
-                                               string secondPlayerName);
+string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore, string playerWhoHasAdvantage);
 
 const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	const string firstPlayerName("player1");
@@ -45,13 +44,11 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	}
 
 	if (scoreNotEqualDuringAdvantages && firstPlayerScore > secondPlayerScore) {
-		return formatScoreWhenNotEqualDuringAdvantages(firstPlayerScore, secondPlayerScore, firstPlayerName,
-		                                               secondPlayerName);
+		return formatScoreWhenNotEqualDuringAdvantages(firstPlayerScore, secondPlayerScore, firstPlayerName);
 	}
 
 	if (scoreNotEqualDuringAdvantages && firstPlayerScore < secondPlayerScore) {
-		return formatScoreWhenNotEqualDuringAdvantages(secondPlayerScore, firstPlayerScore, secondPlayerName,
-		                                               firstPlayerName);
+		return formatScoreWhenNotEqualDuringAdvantages(secondPlayerScore, firstPlayerScore, secondPlayerName);
 	}
 
 	if (scoreNotEqualBeforeAdvantages) {
@@ -61,15 +58,14 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	return string();
 }
 
-string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore, string firstPlayerName,
-                                               string secondPlayerName) {
+string formatScoreWhenNotEqualDuringAdvantages(int firstPlayerScore, int secondPlayerScore, string playerWhoHasAdvantage) {
 	int minusResult = firstPlayerScore - secondPlayerScore;
 
 	if (minusResult == 1) {
-		return formatAdvantageMessage(firstPlayerName);
+		return formatAdvantageMessage(playerWhoHasAdvantage);
 	}
 	if (minusResult >= 2) {
-		return formatWinMessage(firstPlayerName);
+		return formatWinMessage(playerWhoHasAdvantage);
 	}
 	return string();
 }

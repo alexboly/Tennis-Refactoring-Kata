@@ -63,12 +63,7 @@ const std::string tennis_score(int p1Score, int p2Score) {
     }
     else
     {
-
-	    score+=scoreToString(p1Score);
-
-	    score+= SEPARATOR;
-
-	    score += scoreToString(p2Score);
+	    score = scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score);
     }
     return score;
 }

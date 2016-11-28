@@ -25,13 +25,13 @@ const string tennis_score(int p1Score, int p2Score) {
 	if (p1Score == p2Score) {
 		switch (p1Score) {
 			case 0:
-				score = string(ZERO) + string(SEPARATOR) + string(ALL);
+				score = ZERO + SEPARATOR + ALL;
 				break;
 			case 1:
-				score = string(FIFTEEN) + string(SEPARATOR) + string(ALL);
+				score = FIFTEEN + SEPARATOR + ALL;
 				break;
 			case 2:
-				score = string(THIRTY) + string(SEPARATOR) + string(ALL);
+				score = THIRTY + SEPARATOR + ALL;
 				break;
 			default:
 				score = DEUCE;

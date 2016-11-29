@@ -9,10 +9,6 @@ static const string FIFTEEN = "Fifteen";
 static const string THIRTY = "Thirty";
 static const string FORTY = "Forty";
 static const string SEPARATOR = "-";
-static const string ALL = "All";
-static const string DEUCE = "Deuce";
-
-static const string ADVANTAGE = "Advantage";
 
 static const string WIN = "Win for";
 
@@ -20,15 +16,11 @@ static const string SEPARATOR_SPACE = " ";
 
 bool hasAdvantage(int playerScore);
 
-string formatAdvantageMessage(string playerName);
-
 string formatWinMessage(string playerName);
 
 string scoreToString(int score);
 
 string formatScoreNotEqualBeforeAdvantages(int p1Score, int p2Score);
-
-const string formatScoreWhenEqual(const int score);
 
 const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	const string firstPlayerName("player1");
@@ -71,20 +63,6 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	return string();
 }
 
-const string formatScoreWhenEqual(const int score) {
-	switch (score) {
-		case 0:
-			return ZERO + SEPARATOR + ALL;
-		case 1:
-			return FIFTEEN + SEPARATOR + ALL;
-		case 2:
-			return THIRTY + SEPARATOR + ALL;
-		default:
-			return DEUCE;
-
-	}
-}
-
 string formatScoreNotEqualBeforeAdvantages(int p1Score, int p2Score) {
 	return scoreToString(p1Score) + SEPARATOR + scoreToString(p2Score);
 }
@@ -103,8 +81,6 @@ string scoreToString(int score) {
 	return string();
 
 }
-
-string formatAdvantageMessage(string playerName) { return ADVANTAGE + SEPARATOR_SPACE + playerName; }
 
 bool hasAdvantage(int playerScore) { return playerScore >= 4; }
 

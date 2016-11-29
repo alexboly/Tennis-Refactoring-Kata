@@ -28,14 +28,10 @@ string formatScoreNotEqualBeforeAdvantages(int p1Score, int p2Score);
 
 const string formatScoreWhenEqual(const int score);
 
-string formatScoreWhenNotEqualDuringAdvantages(int higherPlayerScore, int lowerPlayerScore, string playerWhoHasAdvantage);
-
 const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 	const string firstPlayerName("player1");
 	const string secondPlayerName("player2");
 	const bool scoreIsEqual = (firstPlayerScore == secondPlayerScore);
-	const bool scoreNotEqualDuringAdvantages = (firstPlayerScore != secondPlayerScore) &&
-	                                           (hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore));
 	const bool scoreNotEqualBeforeAdvantages = (firstPlayerScore != secondPlayerScore) &&
 	                                           !(hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore));
 
@@ -43,30 +39,32 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 		return formatScoreWhenEqual(firstPlayerScore);
 	}
 
-	if (scoreNotEqualDuringAdvantages && firstPlayerScore > secondPlayerScore) {
-		return formatScoreWhenNotEqualDuringAdvantages(firstPlayerScore, secondPlayerScore, firstPlayerName);
+	if ((hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) &&
+	    firstPlayerScore - secondPlayerScore == 1) {
+		return formatAdvantageMessage(firstPlayerName);
 	}
 
-	if (scoreNotEqualDuringAdvantages && firstPlayerScore < secondPlayerScore) {
-		return formatScoreWhenNotEqualDuringAdvantages(secondPlayerScore, firstPlayerScore, secondPlayerName);
+
+	if ((hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) &&
+	    firstPlayerScore - secondPlayerScore >= 2) {
+		return formatWinMessage(firstPlayerName);
+	}
+
+
+	if ((hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) &&
+	    secondPlayerScore - firstPlayerScore == 1) {
+		return formatAdvantageMessage(secondPlayerName);
+	}
+
+	if ((hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) &&
+	    secondPlayerScore - firstPlayerScore >= 2) {
+		return formatWinMessage(secondPlayerName);
 	}
 
 	if (scoreNotEqualBeforeAdvantages) {
 		return formatScoreNotEqualBeforeAdvantages(firstPlayerScore, secondPlayerScore);
 	}
 
-	return string();
-}
-
-string formatScoreWhenNotEqualDuringAdvantages(int higherPlayerScore, int lowerPlayerScore, string playerWhoHasAdvantage) {
-	int minusResult = higherPlayerScore - lowerPlayerScore;
-
-	if (minusResult == 1) {
-		return formatAdvantageMessage(playerWhoHasAdvantage);
-	}
-	if (minusResult >= 2) {
-		return formatWinMessage(playerWhoHasAdvantage);
-	}
 	return string();
 }
 

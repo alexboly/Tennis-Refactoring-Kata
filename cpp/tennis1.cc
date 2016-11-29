@@ -1,6 +1,6 @@
 #include <string>
 #include "EqualTennisScoreFormatting.h"
-#include "PlayerOneHasAdvantageTennisScoreFormatting.h"
+#include "PlayerHasAdvantageTennisScoreFormatting.h"
 
 using namespace std;
 
@@ -41,10 +41,10 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 		return equalTennisScoreFormatting.apply();
 	}
 
-	PlayerOneHasAdvantageTennisScoreFormatting playerOneHasAdvantageTennisScoreFormatting(
+	PlayerHasAdvantageTennisScoreFormatting firstPlayerHasAdvantageTennisScoreFormatting(
 			firstPlayerScore, secondPlayerScore, firstPlayerName);
-	if (playerOneHasAdvantageTennisScoreFormatting.applies()) {
-		return playerOneHasAdvantageTennisScoreFormatting.apply();
+	if (firstPlayerHasAdvantageTennisScoreFormatting.applies()) {
+		return firstPlayerHasAdvantageTennisScoreFormatting.apply();
 	}
 
 
@@ -53,10 +53,10 @@ const string tennis_score(int firstPlayerScore, int secondPlayerScore) {
 		return formatWinMessage(firstPlayerName);
 	}
 
-
-	if ((hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) &&
-	    secondPlayerScore - firstPlayerScore == 1) {
-		return formatAdvantageMessage(secondPlayerName);
+	PlayerHasAdvantageTennisScoreFormatting secondPlayerHasAdvantageTennisScoreFormatting(
+			secondPlayerScore, firstPlayerScore, secondPlayerName);
+	if (secondPlayerHasAdvantageTennisScoreFormatting.applies()) {
+		return secondPlayerHasAdvantageTennisScoreFormatting.apply();
 	}
 
 	if ((hasAdvantage(firstPlayerScore) || hasAdvantage(secondPlayerScore)) &&

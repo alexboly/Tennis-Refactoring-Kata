@@ -8,11 +8,11 @@
 
 #include "ITennisScoreFormattingStrategy.h"
 
-class PlayerOneHasAdvantageTennisScoreFormatting : public ITennisScoreFormattingStrategy {
+class PlayerHasAdvantageTennisScoreFormatting : public ITennisScoreFormattingStrategy {
 public:
-	PlayerOneHasAdvantageTennisScoreFormatting(const int firstPlayerScore,
-		                                           const int secondPlayerScore,
-		                                           const string firstPlayerName);
+	PlayerHasAdvantageTennisScoreFormatting(const int highScorePlayerScore,
+		                                           const int lowScorePlayerScore,
+		                                           const string playerNameWhoHasAdvantage);
 
 	virtual bool applies() const;
 
@@ -21,9 +21,9 @@ public:
 private:
 	bool hasAdvantage(int playerScore)const { return playerScore >= 4; }
 
-	const int firstPlayerScore;
-	const int secondPlayerScore;
-	const string firstPlayerName;
+	const int highScorePlayerScore;
+	const int lowPlayerScore;
+	const string playerNameWhoHasAdvantage;
 	static const string ADVANTAGE;
 	static const string SEPARATOR_SPACE;
 

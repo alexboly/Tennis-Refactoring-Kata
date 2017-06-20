@@ -28,33 +28,30 @@ const std::string tennis_score(int p1Score, int p2Score) {
 }
 
 std::string &formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int p2Score, std::string &score,
+
                                                                int tempScore) {
-    for (int i = 1; i < 3; i++) {
-        if (i == 1) tempScore = p1Score;
-        else {
-            score += "-";
-            tempScore = p2Score;
-        }
-        score = formatScore(score, tempScore);
-    }
+    score = formatScore(score, p1Score);
+    score += "-";
+    score = formatScore(score, p2Score);
+
     return score;
 }
 
 std::string &formatScore(std::string &score, int tempScore) {
     switch (tempScore) {
-            case 0:
-                score += "Love";
-                break;
-            case 1:
-                score += "Fifteen";
-                break;
-            case 2:
-                score += "Thirty";
-                break;
-            case 3:
-                score += "Forty";
-                break;
-        }
+        case 0:
+            score += "Love";
+            break;
+        case 1:
+            score += "Fifteen";
+            break;
+        case 2:
+            score += "Thirty";
+            break;
+        case 3:
+            score += "Forty";
+            break;
+    }
     return score;
 }
 

@@ -1,6 +1,13 @@
 #include <string>
 #include <map>
 
+static std::map<int, std::string> scoreToScoreLabel = {
+        {0, "Love"},
+        {1, "Fifteen"},
+        {2, "Thirty"},
+        {3, "Forty"}
+};
+
 std::string formatScoreWhenEqual(int aPlayerScore);
 
 std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, std::string &score);
@@ -57,11 +64,5 @@ std::string formatScoreWhenEqual(int aPlayerScore) {
 }
 
 std::string formatScore(int score) {
-    std::map<int, std::string> scoreToScoreLabel = {
-            {0, "Love"},
-            {1, "Fifteen"},
-            {2, "Thirty"},
-            {3, "Forty"}
-    };
     return scoreToScoreLabel[score];
 }

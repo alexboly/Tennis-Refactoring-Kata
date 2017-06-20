@@ -1,4 +1,5 @@
 #include <string>
+#include <map>
 
 std::string &formatScoreWhenEqual(int p1Score, std::string &score);
 
@@ -34,20 +35,15 @@ std::string &formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int 
 }
 
 std::string &formatScore(std::string &score, int tempScore) {
-    switch (tempScore) {
-        case 0:
-            score += "Love";
-            break;
-        case 1:
-            score += "Fifteen";
-            break;
-        case 2:
-            score += "Thirty";
-            break;
-        case 3:
-            score += "Forty";
-            break;
-    }
+    std::map<int, std::string> scoreToScoreLabel = {
+            {0, "Love"},
+            {1, "Fifteen"},
+            {2, "Thirty"},
+            {3, "Forty"}
+    };
+
+    score += scoreToScoreLabel[tempScore];
+
     return score;
 }
 

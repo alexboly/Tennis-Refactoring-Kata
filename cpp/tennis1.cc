@@ -5,9 +5,9 @@ std::string formatScoreWhenEqual(int aPlayerScore);
 
 std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, std::string &score);
 
-std::string &formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int p2Score, std::string &score);
+std::string formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int p2Score);
 
-std::string &formatScore(std::string &score, int tempScore);
+std::string formatScore(int score);
 
 const std::string tennis_score(int p1Score, int p2Score) {
     std::string score = "";
@@ -23,32 +23,15 @@ const std::string tennis_score(int p1Score, int p2Score) {
     }
 
     if (!scoreIsEqual && !aPlayerHasAdvantageOrWon) {
-        score = formatScoreWhenGameIsInProgressAndBeforeAdvantage(p1Score, p2Score, score);
+        score = formatScoreWhenGameIsInProgressAndBeforeAdvantage(p1Score, p2Score);
     }
 
     return score;
 
 }
 
-std::string &formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int p2Score, std::string &score) {
-    score = formatScore(score, p1Score);
-    score += "-";
-    score = formatScore(score, p2Score);
-
-    return score;
-}
-
-std::string &formatScore(std::string &score, int tempScore) {
-    std::map<int, std::string> scoreToScoreLabel = {
-            {0, "Love"},
-            {1, "Fifteen"},
-            {2, "Thirty"},
-            {3, "Forty"}
-    };
-
-    score += scoreToScoreLabel[tempScore];
-
-    return score;
+std::string formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int p2Score) {
+    return formatScore(p1Score) + "-" + formatScore(p2Score);
 }
 
 std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, std::string &score) {
@@ -71,4 +54,14 @@ std::string formatScoreWhenEqual(int aPlayerScore) {
         default:
             return "Deuce";
     }
+}
+
+std::string formatScore(int score) {
+    std::map<int, std::string> scoreToScoreLabel = {
+            {0, "Love"},
+            {1, "Fifteen"},
+            {2, "Thirty"},
+            {3, "Forty"}
+    };
+    return scoreToScoreLabel[score];
 }

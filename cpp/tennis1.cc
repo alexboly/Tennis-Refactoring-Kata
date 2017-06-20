@@ -7,6 +7,8 @@ std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, s
 std::string &formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int p2Score, std::string &score,
                                                                int tempScore);
 
+std::string &formatScore(std::string &score, int tempScore);
+
 const std::string tennis_score(int p1Score, int p2Score) {
     std::string score = "";
     int tempScore = 0;
@@ -33,7 +35,13 @@ std::string &formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int 
             score += "-";
             tempScore = p2Score;
         }
-        switch (tempScore) {
+        score = formatScore(score, tempScore);
+    }
+    return score;
+}
+
+std::string &formatScore(std::string &score, int tempScore) {
+    switch (tempScore) {
             case 0:
                 score += "Love";
                 break;
@@ -47,7 +55,6 @@ std::string &formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int 
                 score += "Forty";
                 break;
         }
-    }
     return score;
 }
 

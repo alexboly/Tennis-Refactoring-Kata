@@ -4,6 +4,9 @@ std::string &formatScoreWhenEqual(int p1Score, std::string &score);
 
 std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, std::string &score);
 
+std::string &formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int p2Score, std::string &score,
+                                                               int tempScore);
+
 const std::string tennis_score(int p1Score, int p2Score) {
     std::string score = "";
     int tempScore = 0;
@@ -15,7 +18,16 @@ const std::string tennis_score(int p1Score, int p2Score) {
         if (aPlayerHasAdvantageOrWon) {
             score = formatScoreWhenAPlayerHasAdvantageOrWon(p1Score, p2Score, score);
         } else {
-            for (int i = 1; i < 3; i++) {
+            score = formatScoreWhenGameIsInProgressAndBeforeAdvantage(p1Score, p2Score, score, tempScore);
+        }
+    }
+    return score;
+
+}
+
+std::string &formatScoreWhenGameIsInProgressAndBeforeAdvantage(int p1Score, int p2Score, std::string &score,
+                                                               int tempScore) {
+    for (int i = 1; i < 3; i++) {
                 if (i == 1) tempScore = p1Score;
                 else {
                     score += "-";
@@ -36,10 +48,7 @@ const std::string tennis_score(int p1Score, int p2Score) {
                         break;
                 }
             }
-        }
-    }
     return score;
-
 }
 
 std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, std::string &score) {

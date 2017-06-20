@@ -1,7 +1,7 @@
 #include <string>
 #include <map>
 
-std::string &formatScoreWhenEqual(int p1Score, std::string &score);
+std::string formatScoreWhenEqual(int aPlayerScore);
 
 std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, std::string &score);
 
@@ -15,7 +15,7 @@ const std::string tennis_score(int p1Score, int p2Score) {
     bool aPlayerHasAdvantageOrWon = (p1Score >= 4 || p2Score >= 4);
 
     if (scoreIsEqual) {
-        score = formatScoreWhenEqual(p1Score, score);
+        score = formatScoreWhenEqual(p1Score);
     }
 
     if (!scoreIsEqual && aPlayerHasAdvantageOrWon) {
@@ -60,21 +60,15 @@ std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, s
     return score;
 }
 
-std::string &formatScoreWhenEqual(int p1Score, std::string &score) {
-    switch (p1Score) {
+std::string formatScoreWhenEqual(int aPlayerScore) {
+    switch (aPlayerScore) {
         case 0:
-            score = "Love-All";
-            break;
+            return "Love-All";
         case 1:
-            score = "Fifteen-All";
-            break;
+            return "Fifteen-All";
         case 2:
-            score = "Thirty-All";
-            break;
+            return "Thirty-All";
         default:
-            score = "Deuce";
-            break;
-
+            return "Deuce";
     }
-    return score;
 }

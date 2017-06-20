@@ -2,6 +2,8 @@
 
 std::string &formatScoreWhenEqual(int p1Score, std::string &score);
 
+std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, std::string &score);
+
 const std::string tennis_score(int p1Score, int p2Score) {
     std::string score = "";
     int tempScore = 0;
@@ -9,12 +11,9 @@ const std::string tennis_score(int p1Score, int p2Score) {
     if (scoreIsEqual) {
         score = formatScoreWhenEqual(p1Score, score);
     } else {
-        if (p1Score >= 4 || p2Score >= 4) {
-            int minusResult = p1Score - p2Score;
-            if (minusResult == 1) score = "Advantage player1";
-            else if (minusResult == -1) score = "Advantage player2";
-            else if (minusResult >= 2) score = "Win for player1";
-            else score = "Win for player2";
+        bool aPlayerHasAdvantageOrWon = (p1Score >= 4 || p2Score >= 4);
+        if (aPlayerHasAdvantageOrWon) {
+            score = formatScoreWhenAPlayerHasAdvantageOrWon(p1Score, p2Score, score);
         } else {
             for (int i = 1; i < 3; i++) {
                 if (i == 1) tempScore = p1Score;
@@ -41,6 +40,15 @@ const std::string tennis_score(int p1Score, int p2Score) {
     }
     return score;
 
+}
+
+std::string &formatScoreWhenAPlayerHasAdvantageOrWon(int p1Score, int p2Score, std::string &score) {
+    int minusResult = p1Score - p2Score;
+    if (minusResult == 1) score = "Advantage player1";
+            else if (minusResult == -1) score = "Advantage player2";
+            else if (minusResult >= 2) score = "Win for player1";
+            else score = "Win for player2";
+    return score;
 }
 
 std::string &formatScoreWhenEqual(int p1Score, std::string &score) {

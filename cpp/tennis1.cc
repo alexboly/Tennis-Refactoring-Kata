@@ -12,16 +12,20 @@ std::string &formatScore(std::string &score, int tempScore);
 const std::string tennis_score(int p1Score, int p2Score) {
     std::string score = "";
     bool scoreIsEqual = (p1Score == p2Score);
+    bool aPlayerHasAdvantageOrWon = (p1Score >= 4 || p2Score >= 4);
+
     if (scoreIsEqual) {
         score = formatScoreWhenEqual(p1Score, score);
-    } else {
-        bool aPlayerHasAdvantageOrWon = (p1Score >= 4 || p2Score >= 4);
-        if (aPlayerHasAdvantageOrWon) {
-            score = formatScoreWhenAPlayerHasAdvantageOrWon(p1Score, p2Score, score);
-        } else {
-            score = formatScoreWhenGameIsInProgressAndBeforeAdvantage(p1Score, p2Score, score);
-        }
     }
+
+    if (!scoreIsEqual && aPlayerHasAdvantageOrWon) {
+        score = formatScoreWhenAPlayerHasAdvantageOrWon(p1Score, p2Score, score);
+    }
+
+    if (!scoreIsEqual && !aPlayerHasAdvantageOrWon) {
+        score = formatScoreWhenGameIsInProgressAndBeforeAdvantage(p1Score, p2Score, score);
+    }
+
     return score;
 
 }
